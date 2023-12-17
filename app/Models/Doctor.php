@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Doctor extends Model
 {
     use HasFactory;
      protected $fillable = [
-        'name'
+        'user_id',
+        'gender_id',
+        'phone',
+        'specilizations_id',
     ];
-
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-
 }
+

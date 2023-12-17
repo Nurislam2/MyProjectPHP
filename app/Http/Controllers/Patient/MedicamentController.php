@@ -4,32 +4,15 @@ namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Role;
-use App\Models\Patient;
-use App\Models\PatientsDiagnosesMedicaments;
-use Illuminate\Support\Facades\Auth;
-class InfoController extends Controller
+
+class MedicamentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-   public function index()
-
+    public function index()
     {
-        // $user = Auth::user();
-
-        // // Получаем связанного с ним пациента
-        // $patient = $user->patient;
-
-        // // Получаем данные, связанные с пациентом
-        // $Medi = $patient->patientsDiagnosesMedicaments;
-
-        $user = Auth::user();
-        $patient=Patient::where('user_id',$user->id)->first();
-        $Medi = PatientsDiagnosesMedicaments::where('patients_id', $patient->id)->get();
-
-        return view('patient.info.index',compact('Medi'));
+        return view('patient.info.index');
     }
 
     // /**

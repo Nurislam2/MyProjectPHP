@@ -36,7 +36,13 @@
                     <option value="3">Doctor</option>
                 </select>
             </div>
-
+            <div class="mt-4">
+                <x-label for="gender_id" value="{{ __('Gender:') }}" />
+                <select name="gender_id" x-model="gender_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                    <option value="1">Male</option>
+                    <option value="2">FeMale</option>
+                </select>
+            </div>
             <div class="mt-4" x-show="role_id == 2">
                 <x-label for="patient_address" value="{{ __('Address') }}" />
                 <x-input id="patient_address" class="block mt-1 w-full" type="text" :value="old('patient_address')" name="patient_address" />
@@ -50,6 +56,11 @@
             <div class="mt-4" x-show="role_id == 3">
                 <x-label for="doctor_qualifications" value="{{ __('Qualifications') }}" />
                 <x-input id="doctor_qualifications" class="block mt-1 w-full" type="text" :value="old('doctor_qualifications')" name="doctor_qualifications" />
+            </div>
+
+            <div class="mt-4" x-show="role_id == 3">
+                <x-label for="phone" value="{{ __('phone') }}" />
+                <x-input id="phone" class="block mt-1 w-full" type="text" :value="old('phone')" name="phone" />
             </div>
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">

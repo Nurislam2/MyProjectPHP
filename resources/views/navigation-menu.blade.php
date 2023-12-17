@@ -16,8 +16,8 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    @can('manage-users')
-                    <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
+                    @if(auth()->user()->role_id == 1)
+                    <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.*')">
                         {{ __('Users') }}
                     </x-nav-link>
                     @endif
@@ -25,6 +25,9 @@
                     @if (auth()->user()->role_id == 2)
                         <x-nav-link href="{{ route('patient.info.index') }}" :active="request()->routeIs('patient.info.index')">
                             {{ __('Info') }}
+                        </x-nav-link>
+                         <x-nav-link href="{{ route('patient.medicaments.index') }}" :active="request()->routeIs('patient.info.index')">
+                            {{ __('Medicaments') }}
                         </x-nav-link>
                     @endif
 

@@ -30,11 +30,16 @@ Route::middleware([
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:patient', 'prefix' => 'patient', 'as' => 'patient.'], function() {
         Route::resource('info', \App\Http\Controllers\Patient\InfoController::class);
+        Route::resource('medicaments', \App\Http\Controllers\Patient\Medicamentcontroller::class);
     });
    Route::group(['middleware' => 'role:doctor', 'prefix' => 'doctor', 'as' => 'doctor.'], function() {
        Route::resource('patients', \App\Http\Controllers\Doctor\PatientsController::class);
+    Route::get('patients/{patient}/addmedic', [YourControllerName::class, 'addMedic'])->name('patients.addmedic');
+
    });
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     });
 });
+// *
+// 210.541241025
