@@ -1,36 +1,30 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-             Add Medicaments
+            Make an Appointment
         </h2>
     </x-slot>
 
     <div>
         <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="post" action="{{ route('doctor.patients.addmedic', $patients->id) }}">
+                <form method="post" action="{{ route('checkout') }}">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="medicaments" class="block font-medium text-sm text-gray-700">Medicaments</label>
-                            <select name="medicaments" id="medicaments" class="form-select block w-full">
-                                @foreach($medicament as $medicament)
-                                    <option value="{{ $medicament->id }}"{{ in_array($medicament->id, old('medicaments', [])) ? ' selected' : '' }}>
-                                        {{ $medicament->name }}
+                            <label for="doctor" class="block font-medium text-sm text-gray-700">Doctor</label>
+                            <select name="doctor" id="doctor" class="form-select block w-full">
+                                @foreach($doctors as $doctor)
+                                    <option value="{{ $doctor->id }}"{{ in_array($doctor->id, old('doctor', [])) ? ' selected' : '' }}>
+                                        {{ $doctor->user->name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="diagnoses" class="block font-medium text-sm text-gray-700">Diagnoses</label>
-                            <select name="diagnoses" id="diagnoses" class="form-select block w-full">
-                                @foreach($diagnoses as $diagnoses)
-                                    <option value="{{ $diagnoses->id }}"{{ in_array($diagnoses->id, old('diagnoses', [])) ? ' selected' : '' }}>
-                                        {{ $diagnoses->name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <label for="appointment_date" class="block font-medium text-sm text-gray-700">Appointment Date</label>
+                            <input type="date" name="appointment_date" id="appointment_date" class="form-input block w-full" value="{{ old('appointment_date') }}">
                         </div>
 
                         <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">

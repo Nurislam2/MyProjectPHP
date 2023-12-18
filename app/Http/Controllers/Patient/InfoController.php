@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Patient;
+use App\Models\Doctor;
+
 use App\Models\PatientsDiagnosesMedicaments;
 use Illuminate\Support\Facades\Auth;
 class InfoController extends Controller
@@ -21,6 +23,7 @@ class InfoController extends Controller
 
         // // Получаем связанного с ним пациента
         // $patient = $user->patient;
+        //
 
         // // Получаем данные, связанные с пациентом
         // $Medi = $patient->patientsDiagnosesMedicaments;
@@ -51,10 +54,12 @@ class InfoController extends Controller
     // /**
     //  * Display the specified resource.
     //  */
-    // public function show(string $id)
-    // {
-    //     //
-    // }
+    public function showapintment()
+    {
+        $doctors= Doctor::all();
+        return view('patient.info.show',compact('doctors'));
+
+    }
 
     // *
     //  * Show the form for editing the specified resource.

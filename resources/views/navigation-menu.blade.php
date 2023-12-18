@@ -26,9 +26,10 @@
                         <x-nav-link href="{{ route('patient.info.index') }}" :active="request()->routeIs('patient.info.index')">
                             {{ __('Info') }}
                         </x-nav-link>
-                         <x-nav-link href="{{ route('patient.medicaments.index') }}" :active="request()->routeIs('patient.info.index')">
-                            {{ __('Medicaments') }}
+                         <x-nav-link href="{{ route('patient.appointment') }}" :active="request()->routeIs('patient.appointment')">
+                            {{ __('make an appointment') }}
                         </x-nav-link>
+
                     @endif
 
                     @if(auth()->user()->role_id == 3)

@@ -20,21 +20,27 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Name Patient
                                     </th>
+                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Gender
+                                    </th>
                                     <th scope="col" width="200" class="px-6 py-3 bg-gray-50">
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($patients as $patient)
+
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $patient->id }}
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"  >
+
+                                             <a href="{{ route('doctor.patients.patientinfo', $patient->id) }}" class="text-blue-500 hover:text-blue-500 mb-2 mr-2"> {{ $patient->user->name }}</a>
                                         </td>
                                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            <a href="{{ route('doctor.patients.addmedic', ['patient' => $patient->id]) }}" class="text-blue-500 hover:text-blue-500 mb-2 mr-2">Add Medicaments and Diagnoses</a>
-
+                                            {{ $patient->gender->name }}
                                         </td>
+
                                     </tr>
+
                                 @endforeach
                                 </tbody>
                             </table>
